@@ -25,7 +25,20 @@ namespace F24W12CodeFirstApproach
         }
 
 
-        // data seeding - {optional)
+        // data seeding - (optional)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Standard>().HasData(
+                new Standard() { StandardId = 1, StandardName = "Standard 1" },
+                new Standard() { StandardId = 2, StandardName = "Standard 2" },
+                new Standard() { StandardId = 3, StandardName = "Standard 3" }
+            );
 
+            modelBuilder.Entity<Student>().HasData(
+                new Student() { StudentId = 1, Name = "John", StandardId = 1 },
+                new Student() { StudentId = 2, Name = "Anne", StandardId = 1 },
+                new Student() { StudentId = 3, Name = "Mark", StandardId = 2 }
+            );
+        }
     }
 }
