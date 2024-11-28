@@ -21,7 +21,7 @@ namespace F24W12CodeFirstApproach
         // define the connection string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;Database=SchoolCF; Trusted_Connection=True;MultipleActiveResultSets=true;");
+            optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;Database=SchoolCF2; Trusted_Connection=True;MultipleActiveResultSets=true;");
         }
 
 

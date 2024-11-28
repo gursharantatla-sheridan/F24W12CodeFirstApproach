@@ -16,9 +16,36 @@ namespace F24W12CodeFirstApproach
     /// </summary>
     public partial class MainWindow : Window
     {
+        SchoolContext db = new SchoolContext();
+
         public MainWindow()
         {
             InitializeComponent();
+            LoadStandardsInCombobox();
+        }
+
+        private void LoadStandardsInCombobox()
+        {
+            cmbStandard.ItemsSource = db.Standards.ToList();
+            cmbStandard.DisplayMemberPath = "StandardName";
+            cmbStandard.SelectedValuePath = "StandardId";
+        }
+
+        private void btnLoadStudents_Click(object sender, RoutedEventArgs e)
+        {
+            grdStudents.ItemsSource = db.Students.ToList();
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            Student std = new Student();
+            std.Name = txtName.Text;
+            std.StandardId = (int)cmbStandard.SelectedValue;
+
+            db.Students.Add(std);
+            db.SaveChanges();
+
+            grdStudents.ItemsSource = db.Students.ToList();
         }
     }
 }
